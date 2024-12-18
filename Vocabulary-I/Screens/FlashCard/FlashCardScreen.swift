@@ -144,6 +144,7 @@ struct FlashCardScreen: View {
                     correctMin <= $0.rusToEngCorrect && $0.rusToEngCorrect <= correctMax &&
                     missMin <= $0.rusToEngMiss && $0.rusToEngMiss <= missMax &&
                     totalMin <= ($0.rusToEngMiss + $0.rusToEngCorrect) && ($0.rusToEngMiss + $0.rusToEngCorrect) <= totalMax
+                    
                 })
             case .engToRu:
                 _items = Query(filter: #Predicate {

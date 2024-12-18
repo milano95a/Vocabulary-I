@@ -46,19 +46,35 @@ extension Vocabulary {
     }
     
     var ruToUzAccuracy: Int {
-        Int(Double(rusToUzCorrect) / Double(ruToUzTotal) * 100)
+        if ruToUzTotal >= 5 {
+            return Int(Double(rusToUzCorrect) / Double(ruToUzTotal) * 100)
+        } else {
+            return 0
+        }
     }
     
     var uzToRuAccuracy: Int {
-        Int(Double(uzToRusCorrect) / Double(uzToRuTotal) * 100)
+        if uzToRuTotal >= 5 {
+            return Int(Double(uzToRusCorrect) / Double(uzToRuTotal) * 100)
+        } else {
+            return 0
+        }
     }
     
     var engToRuAccuracy: Int {
-        Int(Double(engToRusCorrect) / Double(engToRuTotal) * 100)
+        if engToRuTotal >= 5 {
+            return Int(Double(engToRusCorrect) / Double(engToRuTotal) * 100)
+        } else {
+            return 0
+        }
     }
     
     var ruToEngAccuracy: Int {
-        Int(Double(rusToEngCorrect) / Double(ruToEngTotal) * 100)
+        if ruToEngTotal >= 5 {
+            return Int(Double(rusToEngCorrect) / Double(ruToEngTotal) * 100)
+        } else {
+            return 0
+        }
     }
 }
 

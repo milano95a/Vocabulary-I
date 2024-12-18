@@ -35,8 +35,7 @@ struct FlashCard: View {
         .clipShape(RoundedRectangle(cornerRadius: 16))
         .foregroundStyle(Color(red: 134/255, green: 136/255, blue: 62/255))
         .font(.title)
-        .minimumScaleFactor(0.2)
-        .lineLimit(1)
+        .minimumScaleFactor(0.2)        
         .rotation3DEffect(
             .degrees(isFlipped ? 180 : 0),  // Rotate 180 degrees when flipped
             axis: (x: 0, y: 1, z: 0),       // Flip around the Y-axis (horizontal flip)
