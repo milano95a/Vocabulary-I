@@ -103,7 +103,9 @@ struct FlashCardScreen: View {
             }
         }
         .onAppear {
-            randomItem = items.randomElement()
+            if randomItem == nil {
+                randomItem = items.randomElement()
+            }
         }
         .onDisappear() {
             let timeSpent = Date.now.timeIntervalSince(startTime)
