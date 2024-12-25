@@ -18,53 +18,12 @@ struct FlashCardScreen: View {
     @State private var showAnswer: Bool = false
     @State private var startTime: Date = .now
     
-    struct FlashCardControl: View {
-        var frontText: String?
-        var backText: String?
-        var onTapCorrect: () -> Void
-        var onTapMiss: () -> Void
-        @Binding var showAnswer: Bool
-        
-        var body: some View {
-            FlashCard(frontText: frontText, backText: backText, isFlipped: $showAnswer)
-                .padding(.top, 100)
-            Spacer()
-            if showAnswer {
-                HStack {
-                    Button(action: {
-                        onTapMiss()
-                    }, label: {
-                        Text("miss")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.red)
-                            .foregroundStyle(Color.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                    })
-                    
-                    Button(action: {
-                        onTapCorrect()
-                    }, label: {
-                        Text("correct")
-                            .frame(maxWidth: .infinity)
-                            .padding()
-                            .background(Color.green)
-                            .foregroundStyle(Color.white)
-                            .clipShape(RoundedRectangle(cornerRadius: 16))
-                    })
-
-                }
-                .padding()
-            }
-        }
-    }
-    
     var body: some View {
         VStack {            
             if randomItem != nil {
                 switch option.language {
                 case .ruToUz:
-                    FlashCardControl(frontText: randomItem?.rus, backText: randomItem?.uz, onTapCorrect: {
+                    FlashCardControl(frontText: randomItem?.rus, backText: randomItem?.uz, count: "\(randomItem?.ruToUzTotal ?? 0)",  onTapCorrect: {
                         randomItem?.rusToUzCorrect.increment()
                         next()
                     }, onTapMiss: {
@@ -73,7 +32,7 @@ struct FlashCardScreen: View {
                     }, showAnswer: $showAnswer)
                     
                 case .uzToRu:
-                    FlashCardControl(frontText: randomItem?.uz, backText: randomItem?.rus, onTapCorrect: {
+                    FlashCardControl(frontText: randomItem?.uz, backText: randomItem?.rus, count: "\(randomItem?.uzToRuTotal ?? 0)", onTapCorrect: {
                         randomItem?.uzToRusCorrect.increment()
                         next()
                     }, onTapMiss: {
@@ -82,7 +41,7 @@ struct FlashCardScreen: View {
                     }, showAnswer: $showAnswer)
                     
                 case .ruToEng:
-                    FlashCardControl(frontText: randomItem?.rus, backText: randomItem?.eng, onTapCorrect: {
+                    FlashCardControl(frontText: randomItem?.rus, backText: randomItem?.eng, count: "\(randomItem?.ruToEngTotal ?? 0)", onTapCorrect: {
                         randomItem?.rusToEngCorrect.increment()
                         next()
                     }, onTapMiss: {
@@ -91,14 +50,18 @@ struct FlashCardScreen: View {
                     }, showAnswer: $showAnswer)
                     
                 case .engToRu:
-                    FlashCardControl(frontText: randomItem?.eng, backText: randomItem?.rus, onTapCorrect: {
+                    FlashCardControl(frontText: randomItem?.eng, backText: randomItem?.rus, count: "\(randomItem?.engToRuTotal ?? 0)", onTapCorrect: {
                         randomItem?.engToRusCorrect.increment()
                         next()
                     }, onTapMiss: {
                         randomItem?.engToRusMiss.increment()
                         next()
                     }, showAnswer: $showAnswer)
-                    
+                }
+                
+                if !showAnswer {
+                    Text("Remaining: \(items.count)")
+                        .foregroundStyle(Color.gray)
                 }
             }
         }

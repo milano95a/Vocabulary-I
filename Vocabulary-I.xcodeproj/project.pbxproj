@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		F03F41B42D1C067900201F95 /* FlashCardControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = F03F41B32D1C067900201F95 /* FlashCardControl.swift */; };
 		F05B1A332D0D613700B4A9D0 /* IntTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B1A322D0D613700B4A9D0 /* IntTextField.swift */; };
 		F05B1A352D0D99D700B4A9D0 /* ListOfVocabularyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B1A342D0D99D700B4A9D0 /* ListOfVocabularyView.swift */; };
 		F05B1A382D0DA01A00B4A9D0 /* ParserScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = F05B1A372D0DA01A00B4A9D0 /* ParserScreen.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		F03F41B32D1C067900201F95 /* FlashCardControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlashCardControl.swift; sourceTree = "<group>"; };
 		F05B1A322D0D613700B4A9D0 /* IntTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntTextField.swift; sourceTree = "<group>"; };
 		F05B1A342D0D99D700B4A9D0 /* ListOfVocabularyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListOfVocabularyView.swift; sourceTree = "<group>"; };
 		F05B1A372D0DA01A00B4A9D0 /* ParserScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParserScreen.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				F0F70E632D0C137A00560D60 /* StatView.swift */,
 				F0F70E6F2D0C465200560D60 /* FlashCard.swift */,
 				F05B1A322D0D613700B4A9D0 /* IntTextField.swift */,
+				F03F41B32D1C067900201F95 /* FlashCardControl.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -248,6 +251,7 @@
 				F0F70E642D0C137A00560D60 /* StatView.swift in Sources */,
 				F0F70E4E2D0C016C00560D60 /* Vocabulary.swift in Sources */,
 				F0F70E622D0C0CBA00560D60 /* DetailVocabularyScreen.swift in Sources */,
+				F03F41B42D1C067900201F95 /* FlashCardControl.swift in Sources */,
 				F0F70E4A2D0C016C00560D60 /* Vocabulary_IApp.swift in Sources */,
 				F0F70E6A2D0C312400560D60 /* FlashCardScreen.swift in Sources */,
 				F0F70E602D0C0CA200560D60 /* AddVocabularyScreen.swift in Sources */,
