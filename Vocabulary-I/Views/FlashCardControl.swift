@@ -21,8 +21,6 @@ struct FlashCardControl: View {
         Spacer()
         if showAnswer {
             VStack {
-                Text("Reviewed: \(count ?? "0")")
-                    .foregroundStyle(Color.gray)
                 HStack {
                     Button(action: {
                         onTapMiss()
@@ -48,6 +46,8 @@ struct FlashCardControl: View {
                     
                 }
                 .padding()
+                Text("Reviewed: \(count ?? "0")")
+                    .foregroundStyle(Color.gray)
             }
         }
     }

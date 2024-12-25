@@ -60,7 +60,7 @@ struct FlashCardScreen: View {
                 }
                 
                 if !showAnswer {
-                    Text("Remaining: \(items.count)")
+                    Text("Words: \(items.count)")
                         .foregroundStyle(Color.gray)
                 }
             }
