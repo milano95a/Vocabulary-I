@@ -204,20 +204,20 @@ struct MoreScreen: View {
                 }
             }
             
-//            Section("Reset") {
-//                Button("Reset") {
-//                    for index in items.indices {
-//                        items[index].rusToEngCorrect = 0
-//                        items[index].rusToEngMiss = 0
-//                        items[index].engToRusCorrect = 0
-//                        items[index].engToRusMiss = 0
-//                        items[index].rusToUzCorrect = 0
-//                        items[index].rusToUzMiss = 0
-//                        items[index].uzToRusCorrect = 0
-//                        items[index].uzToRusMiss = 0
-//                    }
-//                }
-//            }
+            Section("Reset") {
+                Button("Reset") {
+                    for index in items.indices {
+                        items[index].rusToEngCorrect = 0
+                        items[index].rusToEngMiss = 0
+                        items[index].engToRusCorrect = 0
+                        items[index].engToRusMiss = 0
+                        items[index].rusToUzCorrect = 0
+                        items[index].rusToUzMiss = 0
+                        items[index].uzToRusCorrect = 0
+                        items[index].uzToRusMiss = 0
+                    }
+                }
+            }
         }
         .navigationTitle("More")
     }
@@ -236,13 +236,13 @@ struct MoreScreen: View {
     }
     
     func ruToEngAccuracy() -> [ChartItem2] {
-        var numOfVocabularyWithAccuracyEqualOrMoreThan90 = 0
+        var numOfVocabularyWithAccuracyEqualOrMoreThan80 = 0
         var numOfVocabularyWithAccuracyEqualOrMoreLess60 = 0
         var numOfVocabularyWithAccuracyLessThan60 = 0
         
         for item in items {
-            if item.ruToEngAccuracy >= 90 {
-                numOfVocabularyWithAccuracyEqualOrMoreThan90 += 1
+            if item.ruToEngAccuracy >= 80 {
+                numOfVocabularyWithAccuracyEqualOrMoreThan80 += 1
             } else if item.ruToEngAccuracy >= 60 {
                 numOfVocabularyWithAccuracyEqualOrMoreLess60 += 1
             } else {
@@ -250,20 +250,20 @@ struct MoreScreen: View {
             }
         }
         return [
-            .init(title: "90%", value: numOfVocabularyWithAccuracyEqualOrMoreThan90, color: .green),
+            .init(title: "80%", value: numOfVocabularyWithAccuracyEqualOrMoreThan80, color: .green),
             .init(title: "60%", value: numOfVocabularyWithAccuracyEqualOrMoreLess60, color: .orange),
             .init(title: "0%", value: numOfVocabularyWithAccuracyLessThan60, color: .red),
         ]
     }
     
     func engToRuAccuracy() -> [ChartItem2] {
-        var numOfVocabularyWithAccuracyEqualOrMoreThan90 = 0
+        var numOfVocabularyWithAccuracyEqualOrMoreThan80 = 0
         var numOfVocabularyWithAccuracyEqualOrMoreLess60 = 0
         var numOfVocabularyWithAccuracyLessThan60 = 0
         
         for item in items {
             if item.engToRuAccuracy >= 90 {
-                numOfVocabularyWithAccuracyEqualOrMoreThan90 += 1
+                numOfVocabularyWithAccuracyEqualOrMoreThan80 += 1
             } else if item.engToRuAccuracy >= 60 {
                 numOfVocabularyWithAccuracyEqualOrMoreLess60 += 1
             } else {
@@ -271,7 +271,7 @@ struct MoreScreen: View {
             }
         }
         return [
-            .init(title: "90%", value: numOfVocabularyWithAccuracyEqualOrMoreThan90, color: .green),
+            .init(title: "80%", value: numOfVocabularyWithAccuracyEqualOrMoreThan80, color: .green),
             .init(title: "60%", value: numOfVocabularyWithAccuracyEqualOrMoreLess60, color: .orange),
             .init(title: "0%", value: numOfVocabularyWithAccuracyLessThan60, color: .red),
         ]

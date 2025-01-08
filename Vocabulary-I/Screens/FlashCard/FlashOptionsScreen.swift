@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FlashOptionsScreen: View {
-    @State var option: FlashCardOptions = .init(language: .ruToEng, accuracyMin: 0, accuracyMax: 100, totalMin: 0, totalMax: 0, missMin: 0, missMax: 4, correctMin: 0, correctMax: 4)
+    @State var option: FlashCardOptions = .init(language: .ruToEng, accuracyMin: 0, accuracyMax: 100, totalMin: 0, totalMax: 0, missMin: 0, missMax: 4, correctMin: 0, correctMax: 4, fromDate: Date.init(timeIntervalSince1970: 0), toDate: .now)
     
     var body: some View {
         Form {
@@ -39,6 +39,11 @@ struct FlashOptionsScreen: View {
             Section("Miss") {
                 IntTextField("Min", text: $option.missMin)
                 IntTextField("Max", text: $option.missMax)
+            }
+
+            Section("Date") {
+                DatePicker("From", selection: $option.fromDate, displayedComponents: .date)
+                DatePicker("To", selection: $option.toDate, displayedComponents: .date)
             }
 
             Section {

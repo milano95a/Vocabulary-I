@@ -100,6 +100,8 @@ struct FlashCardScreen: View {
         let missMax = option.missMax
         let totalMin = option.totalMin
         let totalMax = option.totalMax
+        let fromDate = option.fromDate
+        let toDate = option.toDate
 //        let accuracyMin = option.accuracyMin
 //        let accuracyMax = option.accuracyMax
 
@@ -108,26 +110,29 @@ struct FlashCardScreen: View {
                 _items = Query(filter: #Predicate {
                     correctMin <= $0.rusToEngCorrect && $0.rusToEngCorrect <= correctMax &&
                     missMin <= $0.rusToEngMiss && $0.rusToEngMiss <= missMax &&
-                    totalMin <= ($0.rusToEngMiss + $0.rusToEngCorrect) && ($0.rusToEngMiss + $0.rusToEngCorrect) <= totalMax
-                    
+                    totalMin <= ($0.rusToEngMiss + $0.rusToEngCorrect) && ($0.rusToEngMiss + $0.rusToEngCorrect) <= totalMax &&
+                    fromDate <= $0.date && $0.date <= toDate
                 })
             case .engToRu:
                 _items = Query(filter: #Predicate {
                     correctMin <= $0.engToRusCorrect && $0.engToRusCorrect <= correctMax &&
                     missMin <= $0.engToRusMiss && $0.engToRusMiss <= missMax &&
-                    totalMin <= ($0.engToRusMiss + $0.engToRusCorrect) && ($0.engToRusMiss + $0.engToRusCorrect) <= totalMax
+                    totalMin <= ($0.engToRusMiss + $0.engToRusCorrect) && ($0.engToRusMiss + $0.engToRusCorrect) <= totalMax &&
+                    fromDate <= $0.date && $0.date <= toDate
                 })
             case .ruToUz:
                 _items = Query(filter: #Predicate {
                     correctMin <= $0.rusToUzCorrect && $0.rusToUzCorrect <= correctMax &&
                     missMin <= $0.rusToUzMiss && $0.rusToUzMiss <= missMax &&
-                    totalMin <= ($0.rusToUzMiss + $0.rusToUzCorrect) && ($0.rusToUzMiss + $0.rusToUzCorrect) <= totalMax
+                    totalMin <= ($0.rusToUzMiss + $0.rusToUzCorrect) && ($0.rusToUzMiss + $0.rusToUzCorrect) <= totalMax &&
+                    fromDate <= $0.date && $0.date <= toDate
                 })
             case .uzToRu:
                 _items = Query(filter: #Predicate {
                     correctMin <= $0.uzToRusCorrect && $0.uzToRusCorrect <= correctMax &&
                     missMin <= $0.rusToUzMiss && $0.uzToRusMiss <= missMax &&
-                    totalMin <= ($0.uzToRusMiss + $0.uzToRusCorrect) && ($0.uzToRusCorrect + $0.uzToRusCorrect) <= totalMax
+                    totalMin <= ($0.uzToRusMiss + $0.uzToRusCorrect) && ($0.uzToRusCorrect + $0.uzToRusCorrect) <= totalMax &&
+                    fromDate <= $0.date && $0.date <= toDate
                 })
         }
     }

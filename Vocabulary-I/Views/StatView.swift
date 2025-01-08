@@ -30,7 +30,7 @@ struct StatView: View {
         
         if accuracy <= 60 {
             return Color.red
-        } else if accuracy < 90 {
+        } else if accuracy < 80 {
             return Color.orange
         } else {
             return Color.green

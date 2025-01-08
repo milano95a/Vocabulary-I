@@ -18,6 +18,8 @@ struct FlashCardOptions {
     var missMax: Int
     var correctMin: Int
     var correctMax: Int
+    var fromDate: Date
+    var toDate: Date
 }
 
 enum FlashCardOptionsLanguage: CaseIterable, Identifiable {
