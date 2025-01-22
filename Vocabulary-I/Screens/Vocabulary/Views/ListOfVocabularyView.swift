@@ -23,8 +23,6 @@ struct ListOfVocabularyView: View {
                             .padding(.bottom, 8)
                         StatView(title: "ru - eng", correct: item.rusToEngCorrect, miss: item.rusToEngMiss)
                         StatView(title: "eng - ru", correct: item.engToRusCorrect, miss: item.engToRusMiss)
-                        StatView(title: "ru - uz", correct: item.rusToUzCorrect, miss: item.rusToUzMiss)
-                        StatView(title: "uz - ru", correct: item.uzToRusCorrect, miss: item.uzToRusMiss)
                     }
                 }
             }
