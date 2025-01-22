@@ -41,12 +41,12 @@ struct FlashCard: View {
             axis: (x: 0, y: 1, z: 0),       // Flip around the Y-axis (horizontal flip)
             perspective: 0.2                // Add some perspective to the rotation
         )
-        .animation(.easeInOut(duration: 0.5), value: isFlipped)
+        .animation(.easeInOut(duration: 0.4), value: isFlipped)
         .onTapGesture {
-            isFlipped = true
+            isFlipped.toggle()
         }
         .onChange(of: isFlipped) {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { // 1 second delay (animation duration)
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 // Action after the animation finishes
                 isFlippedNoAnimation = isFlipped
                 
@@ -64,7 +64,7 @@ struct FlashCard: View {
     struct Wrapper: View {
         @State private var isFlipped = false
         var body: some View {
-            FlashCard(frontText: "front", backText: "back", isFlipped: $isFlipped)
+            FlashCard(frontText: "front front front front front front", backText: "back back", isFlipped: $isFlipped)
         }
     }
     

@@ -15,6 +15,7 @@ struct MoreScreen: View {
     
     var body: some View {
         Form {
+            
             HStack {
                 Text("Vocabulary count")
                 Spacer()
@@ -31,12 +32,6 @@ struct MoreScreen: View {
                                 .foregroundStyle(item.color)
                         }
                     }
-//                    Chart {
-//                        ForEach(engToRuAccuracy()) { item in
-//                            SectorMark(angle: .value("Level", item.value))
-//                                .foregroundStyle(item.color)
-//                        }
-//                    }
                 }
                 .padding(.vertical, 16)
                 
@@ -205,19 +200,54 @@ struct MoreScreen: View {
             }
             
             Section("Reset") {
-                Button("Reset") {
+                Button("Reset unlearned") {
                     for index in items.indices {
-                        items[index].rusToEngCorrect = 0
+                        if items[index].rusToEngMiss > 0 {
+                            items[index].rusToEngCorrect = 0
+                            items[index].rusToEngMiss = 0
+                        }
+                        
+                        if items[index].engToRusMiss > 0 {
+                            items[index].engToRusCorrect = 0
+                            items[index].engToRusMiss = 0
+                        }
+                    }
+                }
+                
+                Button("Reset everything to 5") {
+                    for index in items.indices {
+                        items[index].rusToEngCorrect = 5
                         items[index].rusToEngMiss = 0
-                        items[index].engToRusCorrect = 0
+                        items[index].engToRusCorrect = 5
                         items[index].engToRusMiss = 0
-                        items[index].rusToUzCorrect = 0
+                        items[index].rusToUzCorrect = 5
                         items[index].rusToUzMiss = 0
-                        items[index].uzToRusCorrect = 0
+                        items[index].uzToRusCorrect = 5
                         items[index].uzToRusMiss = 0
                     }
                 }
             }
+                        
+            Section("Process") {
+                Button("Process") {
+                    process()
+                }
+            }
+            
+//            Section("Reset") {
+//                Button("Reset") {
+//                    for index in items.indices {
+//                        items[index].rusToEngCorrect = 0
+//                        items[index].rusToEngMiss = 0
+//                        items[index].engToRusCorrect = 0
+//                        items[index].engToRusMiss = 0
+//                        items[index].rusToUzCorrect = 0
+//                        items[index].rusToUzMiss = 0
+//                        items[index].uzToRusCorrect = 0
+//                        items[index].uzToRusMiss = 0
+//                    }
+//                }
+//            }
         }
         .navigationTitle("More")
     }
@@ -233,6 +263,14 @@ struct MoreScreen: View {
         var title: String
         var value: Int
         var color: Color
+    }
+    
+    func process() {
+        for index in items.indices {
+            items[index].eng = items[index].eng.lowercased().removeWhiteSpacesAtTheBeginning
+            items[index].rus = items[index].rus.lowercased().removeWhiteSpacesAtTheBeginning
+            items[index].uz = items[index].uz.lowercased().removeWhiteSpacesAtTheBeginning
+        }
     }
     
     func ruToEngAccuracy() -> [ChartItem2] {

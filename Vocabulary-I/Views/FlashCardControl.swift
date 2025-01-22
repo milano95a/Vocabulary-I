@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct FlashCardControl: View {
-    var frontText: String?
-    var backText: String?
+    var frontText: String? = "fron front front front front front front"
+    var backText: String? = "back back"
     var count: String?
     var onTapCorrect: () -> Void
     var onTapMiss: () -> Void
@@ -97,6 +97,14 @@ struct FlashCardControl: View {
 
 
 
-//#Preview {
-//    FlashCardControl()
-//}
+#Preview {
+    struct Wrapper: View {
+        @State var isFlipped: Bool = false
+        
+        var body: some View {
+            FlashCardControl(onTapCorrect: { }, onTapMiss: { }, showAnswer: $isFlipped)
+        }
+    }
+    
+    return Wrapper()
+}

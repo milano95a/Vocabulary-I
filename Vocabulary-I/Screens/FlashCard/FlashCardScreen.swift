@@ -23,25 +23,13 @@ struct FlashCardScreen: View {
             if randomItem != nil {
                 switch option.language {
                 case .ruToUz:
-                    FlashCardControl(frontText: randomItem?.rus, backText: randomItem?.uz, count: "\(randomItem?.ruToUzTotal ?? 0)",  onTapCorrect: {
-                        randomItem?.rusToUzCorrect.increment()
-                        next()
-                    }, onTapMiss: {
-                        randomItem?.rusToUzMiss.increment()
-                        next()
-                    }, showAnswer: $showAnswer)
+                    EmptyView()
                     
                 case .uzToRu:
-                    FlashCardControl(frontText: randomItem?.uz, backText: randomItem?.rus, count: "\(randomItem?.uzToRuTotal ?? 0)", onTapCorrect: {
-                        randomItem?.uzToRusCorrect.increment()
-                        next()
-                    }, onTapMiss: {
-                        randomItem?.uzToRusMiss.increment()
-                        next()
-                    }, showAnswer: $showAnswer)
+                    EmptyView()
                     
                 case .ruToEng:
-                    FlashCardControl(frontText: randomItem?.rus, backText: randomItem?.eng, count: "\(randomItem?.ruToEngTotal ?? 0)", onTapCorrect: {
+                    FlashCardControl(frontText: randomItem?.rus, backText: "\(randomItem?.eng ?? "")\n\n\(randomItem?.uz ?? "")", count: "\(randomItem?.ruToEngTotal ?? 0)", onTapCorrect: {
                         randomItem?.rusToEngCorrect.increment()
                         next()
                     }, onTapMiss: {
@@ -50,7 +38,7 @@ struct FlashCardScreen: View {
                     }, showAnswer: $showAnswer)
                     
                 case .engToRu:
-                    FlashCardControl(frontText: randomItem?.eng, backText: randomItem?.rus, count: "\(randomItem?.engToRuTotal ?? 0)", onTapCorrect: {
+                    FlashCardControl(frontText: "\(randomItem?.eng ?? "")\n\n\(randomItem?.uz ?? "")", backText: randomItem?.rus, count: "\(randomItem?.engToRuTotal ?? 0)", onTapCorrect: {
                         randomItem?.engToRusCorrect.increment()
                         next()
                     }, onTapMiss: {
@@ -102,8 +90,6 @@ struct FlashCardScreen: View {
         let totalMax = option.totalMax
         let fromDate = option.fromDate
         let toDate = option.toDate
-//        let accuracyMin = option.accuracyMin
-//        let accuracyMax = option.accuracyMax
 
         switch option.language {
             case .ruToEng:
