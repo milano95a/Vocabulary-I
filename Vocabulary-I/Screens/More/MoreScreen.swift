@@ -101,12 +101,6 @@ struct MoreScreen: View {
                                 .foregroundStyle(item.color)
                         }
                     }
-//                    Chart {
-//                        ForEach(engToRuAccuracy()) { item in
-//                            SectorMark(angle: .value("Level", item.value))
-//                                .foregroundStyle(item.color)
-//                        }
-//                    }
                 }
                 .padding(.vertical, 16)
                 
@@ -200,7 +194,7 @@ struct MoreScreen: View {
             }
             
             Section("Reset") {
-                Button("Reset unlearned") {
+                Button("Reset unlearned to 0") {
                     for index in items.indices {
                         if items[index].rusToEngMiss > 0 {
                             items[index].rusToEngCorrect = 0
@@ -228,26 +222,17 @@ struct MoreScreen: View {
                 }
             }
                         
-            Section("Process") {
-                Button("Process") {
-                    process()
+            Section("Processing") {
+                Button("to lowercase") {
+                    toLowercase()
+                }
+                Button("remove dot (.)") {
+                    removeDots()
+                }
+                Button("remove space at the beginning") {
+                    removeSpace()
                 }
             }
-            
-//            Section("Reset") {
-//                Button("Reset") {
-//                    for index in items.indices {
-//                        items[index].rusToEngCorrect = 0
-//                        items[index].rusToEngMiss = 0
-//                        items[index].engToRusCorrect = 0
-//                        items[index].engToRusMiss = 0
-//                        items[index].rusToUzCorrect = 0
-//                        items[index].rusToUzMiss = 0
-//                        items[index].uzToRusCorrect = 0
-//                        items[index].uzToRusMiss = 0
-//                    }
-//                }
-//            }
         }
         .navigationTitle("More")
     }
@@ -265,11 +250,27 @@ struct MoreScreen: View {
         var color: Color
     }
     
-    func process() {
+    func toLowercase() {
         for index in items.indices {
-            items[index].eng = items[index].eng.lowercased().removeWhiteSpacesAtTheBeginning
-            items[index].rus = items[index].rus.lowercased().removeWhiteSpacesAtTheBeginning
-            items[index].uz = items[index].uz.lowercased().removeWhiteSpacesAtTheBeginning
+            items[index].eng = items[index].eng.lowercased()
+            items[index].rus = items[index].rus.lowercased()
+            items[index].uz = items[index].uz.lowercased()
+        }
+    }
+    
+    func removeDots() {
+        for index in items.indices {
+            items[index].eng = items[index].eng.replacingOccurrences(of: ".", with: "")
+            items[index].rus = items[index].rus.replacingOccurrences(of: ".", with: "")
+            items[index].uz = items[index].uz.replacingOccurrences(of: ".", with: "")
+        }
+    }
+    
+    func removeSpace() {
+        for index in items.indices {
+            items[index].eng = items[index].eng.removeWhiteSpacesAtTheBeginning
+            items[index].rus = items[index].rus.removeWhiteSpacesAtTheBeginning
+            items[index].uz = items[index].uz.removeWhiteSpacesAtTheBeginning
         }
     }
     

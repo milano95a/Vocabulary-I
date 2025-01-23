@@ -28,19 +28,13 @@ enum FlashCardOptionsLanguage: CaseIterable, Identifiable {
         self.title
     }
     
-//    case all
     case ruToEng
     case engToRu
-    case ruToUz
-    case uzToRu
     
     var title: String {
         switch self {
-//            case .all: return "All"
             case .ruToEng: return "ru - eng"
             case .engToRu: return "eng - ru"
-            case .ruToUz: return "ru - uz"
-            case .uzToRu: return "uz - ru"
         }
     }
 }

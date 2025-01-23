@@ -22,12 +22,6 @@ struct FlashCardScreen: View {
         VStack {            
             if randomItem != nil {
                 switch option.language {
-                case .ruToUz:
-                    EmptyView()
-                    
-                case .uzToRu:
-                    EmptyView()
-                    
                 case .ruToEng:
                     FlashCardControl(frontText: randomItem?.rus, backText: "\(randomItem?.eng ?? "")\n\n\(randomItem?.uz ?? "")", count: "\(randomItem?.ruToEngTotal ?? 0)", onTapCorrect: {
                         randomItem?.rusToEngCorrect.increment()
@@ -104,20 +98,6 @@ struct FlashCardScreen: View {
                     correctMin <= $0.engToRusCorrect && $0.engToRusCorrect <= correctMax &&
                     missMin <= $0.engToRusMiss && $0.engToRusMiss <= missMax &&
                     totalMin <= ($0.engToRusMiss + $0.engToRusCorrect) && ($0.engToRusMiss + $0.engToRusCorrect) <= totalMax &&
-                    fromDate <= $0.date && $0.date <= toDate
-                })
-            case .ruToUz:
-                _items = Query(filter: #Predicate {
-                    correctMin <= $0.rusToUzCorrect && $0.rusToUzCorrect <= correctMax &&
-                    missMin <= $0.rusToUzMiss && $0.rusToUzMiss <= missMax &&
-                    totalMin <= ($0.rusToUzMiss + $0.rusToUzCorrect) && ($0.rusToUzMiss + $0.rusToUzCorrect) <= totalMax &&
-                    fromDate <= $0.date && $0.date <= toDate
-                })
-            case .uzToRu:
-                _items = Query(filter: #Predicate {
-                    correctMin <= $0.uzToRusCorrect && $0.uzToRusCorrect <= correctMax &&
-                    missMin <= $0.rusToUzMiss && $0.uzToRusMiss <= missMax &&
-                    totalMin <= ($0.uzToRusMiss + $0.uzToRusCorrect) && ($0.uzToRusCorrect + $0.uzToRusCorrect) <= totalMax &&
                     fromDate <= $0.date && $0.date <= toDate
                 })
         }
