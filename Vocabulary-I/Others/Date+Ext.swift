@@ -16,7 +16,15 @@ extension Date {
         }
     }
     
+    static var beginningOfToday: Date {
+        if let endOfToday = Calendar.current.date(bySettingHour: 0, minute: 0, second: 0, of: .now) {
+            return endOfToday
+        } else {
+            return .now
+        }
+    }
+    
     static var oneYearBefore: Date {
-        return .now.addingTimeInterval(-365.25 * 86400)
+        return .now.addingTimeInterval(-367 * 86400)
     }
 }

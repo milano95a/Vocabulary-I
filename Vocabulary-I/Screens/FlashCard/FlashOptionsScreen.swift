@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FlashOptionsScreen: View {
-    @State var option: FlashCardOptions = .init(language: .ruToEng, accuracyMin: 0, accuracyMax: 100, totalMin: 0, totalMax: 4, missMin: 0, missMax: 4, correctMin: 0, correctMax: 4, fromDate: .oneYearBefore, toDate: .endOfToday)
+    @State var option: FlashCardOptions = .init(language: .engToRu, accuracyMin: 0, accuracyMax: 100, totalMin: 0, totalMax: 4, missMin: 0, missMax: 4, correctMin: 0, correctMax: 4, fromDate: .beginningOfToday, toDate: .endOfToday)
     
     var body: some View {
         Form {

@@ -27,7 +27,6 @@ struct ListOfVocabularyView: View {
                 }
             }
             .onDelete(perform: deleteItems)
-            
         }
     }
     
